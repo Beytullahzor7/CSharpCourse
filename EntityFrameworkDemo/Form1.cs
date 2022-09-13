@@ -28,6 +28,12 @@ namespace EntityFrameworkDemo
             dataGridView1.DataSource = _productDal.GetAll();
         }
 
+        protected void SearchProducts(string key)
+        {
+            //var result = _productDal.GetAll().Where(p => p.Name.Contains(key)).ToList();
+            var result = _productDal.GetByName(key);
+            dataGridView1.DataSource = result;
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -41,9 +47,6 @@ namespace EntityFrameworkDemo
             LoadProducts();
             MessageBox.Show("Added!");
         }
-
-
-
 
         private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -75,6 +78,17 @@ namespace EntityFrameworkDemo
 
             LoadProducts();
             MessageBox.Show("Deleted!");
+        }
+
+        private void tbxSearch_TextChanged(object sender, EventArgs e)
+        {
+            SearchProducts(tbxSearch.Text);
+
+        }
+
+        private void btnGetById_Click(object sender, EventArgs e)
+        {
+            _productDal.GetById(2);
         }
     }
 }
