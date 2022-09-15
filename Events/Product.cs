@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Events
 {
+
+    //  Uygulamada bir hareket oldugunda, o harekete ek olarak
+    //  yapmak istedigimiz bir islem varsa bunu event ile yapabiliriz
+
+    //  Eventler delegelerin kullanimi ile yapilabilecek islemlerdir
     public delegate void StockControl();
     public class Product
     {
